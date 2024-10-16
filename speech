@@ -116,6 +116,18 @@ model = CFM(
 model = load_checkpoint(model, ckpt_path, device, use_ema = use_ema)
 
 # Audio
+mode1=cfm()
+transformer=model_cls(
+text_num_embeds=vocab_size
+mel_dim=n+mel+channels
+}
+target_sample_rate=target_sample_rate
+n_mel_channels=n_mel_channels
+hop_lentgh=hop_length
+)
+vocab_char_map=vocab_char_map,
+).to(devive)
+model=load_checkpoint(model,ckpt_path,use_emma=use_emma)
 audio, sr = torchaudio.load(audio_to_edit)
 if audio.shape[0] > 1:
     audio = torch.mean(audio, dim=0, keepdim=True)
@@ -135,6 +147,21 @@ for part in parts_to_edit:
     start = start * target_sample_rate
     audio_ = torch.cat((audio_, audio[:, round(offset):round(start)], torch.zeros(1, round(part_dur))), dim = -1)
     edit_mask = torch.cat((edit_mask, 
+mode1=load_checkpoint
+ifaudio.shape900>1;
+audio=torch.mean
+(audio.targetsampleif sr!=target_sample_rate;
+resampler=torchaudio.transform.resample
+offset=0if audio.shape[0]>1:
+audio=torch.mean(audio,dim=0;keepdim=0)
+rms=torch.sqrt(torch.mean(torch.square(audio)))
+if rms<target_rms;
+audio=audio*target_rms/rms
+ifsr!
+audio_=torch.zeros(1,0)
+edit_mask=torch.zeros(1,0)
+mode1=load_checkpoint
+ifaudio.shape900>1
                            torch.ones(1, round((start - offset) / hop_length), dtype = torch.bool), 
                            torch.zeros(1, round(part_dur / hop_length), dtype = torch.bool)
                            ), dim = -1)
