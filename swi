@@ -18,7 +18,6 @@ from model.utils import (
 from transformers import pipeline
 import click
 import soundfile as sf
-
 try:
     import spaces
     USING_SPACES = True
@@ -59,8 +58,6 @@ ode_method = "euler"
 sway_sampling_coef = -1.0
 speed = 1.0
 fix_duration = None
-
-
 def load_model(repo_name, exp_name, model_cls, model_cfg, ckpt_step):
     ckpt_path = str(cached_path(f"hf://SWivid/{repo_name}/{exp_name}/model_{ckpt_step}.safetensors"))
     # ckpt_path = f"ckpts/{exp_name}/model_{ckpt_step}.pt"  # .pt | .safetensors
